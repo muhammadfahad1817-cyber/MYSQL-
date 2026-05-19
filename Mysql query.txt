@@ -14,3 +14,26 @@ USE hblDb;
 INSERT INTO employees(id,name,age,gender,designation,salary)
 VALUES
 (1,"Ali",18,"Male","Software Engineer",80000);
+
+
+-- INSERT (use for commit mysql query)
+
+-- INSERT into all col
+INSERT INTO employees(id,name,age,gender)
+VALUES
+(2,"Ahmed",18,"Male","Software Engineer",70000);
+
+
+-- INSERT into specific col
+INSERT INTO employees(id,name,age,gender)
+VALUES
+(3,"Aliyan",18,"Male");
+
+
+for insert multiple rows
+
+INSERT INTO employees
+VALUES
+(4,"Ali raza",18,"Male","HR",50000),
+(5,"Atif",18,"Male","HR",65000),
+(6,"khanji",18,"Male","HR",67000);
