@@ -1,0 +1,16 @@
+CREATE DATABASE hblDb;
+
+CREATE TABLE employees ( 
+  id int PRIMARY KEY,
+  name varchar(50),
+  age int,
+  gender varchar(50),
+  designation varchar(50),
+  Salary int
+            );
+
+USE hblDb;
+
+INSERT INTO employees(id,name,age,gender,designation,salary)
+VALUES
+(1,"Ali",18,"Male","Software Engineer",80000);
