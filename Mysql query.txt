@@ -19,7 +19,7 @@ VALUES
 -- INSERT (use for commit mysql query)
 
 -- INSERT into all col
-INSERT INTO employees(id,name,age,gender)
+INSERT INTO employees(id,name,age,gender,desination,salary)
 VALUES
 (2,"Ahmed",18,"Male","Software Engineer",70000);
 
@@ -41,3 +41,65 @@ VALUES
 
 -- UPDATE
 UPDATE employees SET age = 19 WHERE id = 2;
+
+
+UPDATE employees 
+SET 
+age = 19, 
+designation = "HR"
+WHERE id = 3;
+
+
+
+UPDATE employees 
+SET designation = "Senior Soft. Engr"
+WHERE 
+designation = "Software Engineer"
+
+
+-- Delete
+DELETE from employees WHERE id = 3;
+
+
+-- Read all columns of table
+SELECT * FROM employees 
+
+
+
+-- read specific columns of table
+SELECT id, name FROM employees;
+
+
+-- reading employees in descending order -> name col
+SELECT * FROM  employees ORDER BY name DESC;
+
+
+-- read only 3 employees 
+SELECT * FROM employees LIMIT 3;
+SELECT * FROM employees LIMIT 1,3;
+
+
+-- show second highest salary person
+SELECT * FROM employees ORDER BY salary DESC LIMIT 1,1;
+
+
+-- use for not repeat any value
+SELECT DISTINCT designation FROM employees;
+
+
+
+-- use for show persons those salary are greater than 60000
+SELECT * FROM employees WHERE salary > 60000;
+
+
+
+-- Alter Table 
+-- Add col email
+ALTER TABLE employees ADD email VARCHAR(50);
+
+
+-- use for update data in new email column for specified person
+UPDATE employees SET email = "ali@gmail.com" WHERE id = 1;
+
+-- use for updating existing column datatype or value
+ALTER TABLE employees MODIFY COLUMN email VARCHAR(100);
