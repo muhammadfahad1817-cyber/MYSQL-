@@ -37,3 +37,7 @@ VALUES
 (4,"Ali raza",18,"Male","HR",50000),
 (5,"Atif",18,"Male","HR",65000),
 (6,"khanji",18,"Male","HR",67000);
+
+
+-- UPDATE
+UPDATE employees SET age = 19 WHERE id = 2;
