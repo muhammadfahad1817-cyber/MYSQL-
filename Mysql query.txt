@@ -103,3 +103,58 @@ UPDATE employees SET email = "ali@gmail.com" WHERE id = 1;
 
 -- use for updating existing column datatype or value
 ALTER TABLE employees MODIFY COLUMN email VARCHAR(100);
+
+-- Delete an exisiting column 
+ALTER TABLE employees DROP COLUMN email;
+
+
+
+-- adding a column at particular location
+ALTER TABLE employees ADD COLUMN last_name VARCHAR(50) AFTER name;
+
+
+-- Delete whole table
+-- 	DROP TABLE employees;
+
+-- change col name
+ALTER TABLE employees CHANGE name first_name VARCHAR(50);
+
+
+-- change table name
+ALTER TABLE employees RENAME TO staff;
+
+
+
+
+CREATE DATABASE EcommerceDB;
+USE EcommerceDB;
+CREATE TABLE customeres(
+    customer_id int PRIMARY KEY AUTO_INCREMENT,
+    customer_name VARCHAR(50) NOT NULL, 
+    customer_age int NOT NULL,
+    customer_address VARCHAR(500) NOT NULL,
+    customer_city VARCHAR(50) NOT NULL,
+    customer_phone_number VARCHAR(50) NOT NULL
+    )
+
+
+orders:-
+       Constraint FK-customers-order FOREIGN KEY (c-id)
+REFERENCES customers (customer-id);
+
+
+Syntax:-
+     constraint constraint-name foreign key (col-name) 
+     References table-name (PK-col-name)
+
+
+USE EcommerceDB;
+
+CREATE TABLE orders(
+    order_id INT PRIMARY KEY AUTO_INCREMENT,
+    order_item VARCHAR(50) NOT NULL,
+    order_quantity INT NOT NULL,
+    price_of_each INT NOT NULL,
+    c_id INT,
+    CONSTRAINT FK_Customer_Order FOREIGN KEY (c_id) REFERENCES customers (customer_id)
+    );
