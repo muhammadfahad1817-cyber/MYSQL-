@@ -182,17 +182,110 @@ USE schooldb;
     -- name VARCHAR (100)
    -- ) ;
     
-    INSERT INTO teachers (name)
-    VALUES
-    ("Mr.Ali"),
-    ("Ms.Sara"),
-    ("Mr.Ahmed");
+    -- INSERT INTO teachers (name)
+    -- VALUES
+    -- ("Mr.Ali"),
+    -- ("Ms.Sara"),
+    -- ("Mr.Ahmed");
 
 
  
-    CREATE TABLE students(
-        id int PRIMARY KEY AUTO_INCREMENT,
-        name varchar(100),
-        teacher_id int,
-        CONSTRAINT FK_teachers_students FOREIGN KEY(teacher_id) REFERENCES teachers(id)
-        );
+    -- CREATE TABLE students(
+        -- id int PRIMARY KEY AUTO_INCREMENT,
+        -- name varchar(100),
+        -- teacher_id int,
+        -- CONSTRAINT FK_teachers_students FOREIGN KEY(teacher_id) REFERENCES teachers(id)
+        -- );
+
+
+
+INSERT INTO students (name,teacher_id)
+        VALUES
+        ("Ayesha",1),
+        ("Bilal",1),
+        ("Hamza ali mazari",2),
+        ("Fatima", Null);
+        
+
+JOIN:-
+    Combining two tables data
+
+
+
+Inner Join display common data
+
+
+ -- insert: join common data
+        SELECT students.name, teachers.name
+        FROM students
+        INNER JOIN teachers
+        ON students.teacher_id = teachers.id;
+
+
+use for giving name to specify name to verify teachers and students name
+
+   -- insert: join common data
+        SELECT students.name AS student_name,
+        teachers.name AS teacher_name
+        FROM students
+        INNER JOIN teachers
+        ON students.teacher_id = teachers.id;
+
+
+use for display Mr ali students only
+
+  -- insert: join common data
+        SELECT students.name AS student_name,
+        teachers.name AS teacher_name
+        FROM students
+        INNER JOIN teachers
+        ON students.teacher_id = teachers.id
+        WHERE teachers.name = "Mr.Ali";
+
+
+left join:-
+       left join display common data and all left data
+
+
+
+       -- insert: join common data
+        SELECT students.name AS student_name,
+        teachers.name AS teacher_name
+        FROM students
+        LEFT JOIN teachers
+        ON students.teacher_id = teachers.id
+        ;
+
+
+right join:-
+       right join display common data and all right data
+
+
+-- insert: join common data
+        SELECT students.name AS student_name,
+        teachers.name AS teacher_name
+        FROM students
+        RIGHT JOIN teachers
+        ON students.teacher_id = teachers.id
+        ;
+
+
+Union:-
+     display all data
+
+
+  SELECT students.name AS student_name,
+        teachers.name AS teacher_name
+        FROM students
+        RIGHT JOIN teachers
+        ON students.teacher_id = teachers.id
+        
+        UNION
+        
+        SELECT students.name AS student_name,
+        teachers.name AS teacher_name
+        FROM students
+        LEFT JOIN teachers
+        ON students.teacher_id = teachers.id;
+        
+        
