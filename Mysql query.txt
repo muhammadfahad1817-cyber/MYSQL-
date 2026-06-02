@@ -128,7 +128,7 @@ ALTER TABLE employees RENAME TO staff;
 
 CREATE DATABASE EcommerceDB;
 USE EcommerceDB;
-CREATE TABLE customeres(
+CREATE TABLE customers(
     customer_id int PRIMARY KEY AUTO_INCREMENT,
     customer_name VARCHAR(50) NOT NULL, 
     customer_age int NOT NULL,
@@ -169,3 +169,30 @@ PK:-
 
 FK:- 
     build relation between two tables
+
+
+
+
+
+-- CREATE DATABASE schooldb;
+USE schooldb;
+
+-- CREATE TABLE teachers (
+    -- id int PRIMARY KEY AUTO_INCREMENT,
+    -- name VARCHAR (100)
+   -- ) ;
+    
+    INSERT INTO teachers (name)
+    VALUES
+    ("Mr.Ali"),
+    ("Ms.Sara"),
+    ("Mr.Ahmed");
+
+
+ 
+    CREATE TABLE students(
+        id int PRIMARY KEY AUTO_INCREMENT,
+        name varchar(100),
+        teacher_id int,
+        CONSTRAINT FK_teachers_students FOREIGN KEY(teacher_id) REFERENCES teachers(id)
+        );
