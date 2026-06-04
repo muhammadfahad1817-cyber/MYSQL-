@@ -288,4 +288,44 @@ Union:-
         LEFT JOIN teachers
         ON students.teacher_id = teachers.id;
         
+
+
+
+CREATE DATABASE admins;
+use admins;
+CREATE TABLE student(
+id int PRIMARY KEY AUTO_INCREMENT,
+name varchar(20) NOT NULL,
+email varchar(20) UNIQUE,
+age int CHECK(age >=18)
+)
+
+
+INSERT INTO student (name,email,age)
+VALUES
+("ali","ali@gmail.com",22),
+("ahmed","ahmed@gmail.com",23),
+("hamza","hamza@gmail.com",20),
+("hassan","hassan@gmail.com",19),
+("saif","saif@gmail.com",18)
+
+
+UPDATE student SET name ="rehman dakait" WHERE id =2
+UPDATE student SET email ="rehman@gmail.com" WHERE id =2
         
+CREATE TABLE course(
+cid int PRIMARY KEY AUTO_INCREMENT,
+cname varchar(20)
+);
+
+INSERT INTO course (cname)
+VALUES
+("html"),
+("Css");
+
+
+SELECT name,email,cname FROM student S INNER JOIN course C ON S.id=C.cid;
+
+
+Alias:- 
+     Temporary name
