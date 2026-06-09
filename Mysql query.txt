@@ -385,3 +385,110 @@ c2.category_name AS parent
 FROM categories AS c1
 INNER JOIN categories AS c2
 ON c1.parent_id = c2.category_id;
+
+
+SQL -> reuse query ->
+
+Delimeter //
+create procedure sp_getallstudents()
+BEGIN
+Select * from Students;
+END //
+DELIMETER ;
+
+
+-- store procedure use
+-- call
+CALL sp_getallstudents();
+
+
+
+-- get all student name with teacher name
+-- inner join
+SELECT 
+students.name AS studentname,
+teachers.name AS teachername
+FROM students
+INNER JOIN teachers
+ON students.teacher_id = teachers.id;
+
+
+
+-- get all student name with teacher name
+-- inner join
+DELIMITER //
+CREATE PROCEDURE sp_getstudentbyteacher()
+BEGIN
+SELECT 
+students.name AS studentname,
+teachers.name AS teachername
+FROM students
+INNER JOIN teachers
+ON students.teacher_id = teachers.id;
+END //
+DELIMITER ;
+
+-- call
+CALL sp_getstudentbyteacher()
+
+
+-- get all students of Mr ali
+-- inner join
+SELECT 
+students.name AS studentname,
+teachers.name AS teachername
+FROM students
+INNER JOIN teachers
+ON students.teacher_id = teachers.id
+WHERE teachers.name = "Mr. Ali";
+
+
+-- get all students of Mr ali
+-- inner join
+-- parameter -> in
+DELIMITER //
+CREATE PROCEDURE sp_getstudentbyteachername(IN t_name VARCHAR(100))
+BEGIN
+SELECT 
+students.name AS studentname,
+teachers.name AS teachername
+FROM students
+INNER JOIN teachers
+ON students.teacher_id = teachers.id
+WHERE teachers.name = t_name;
+END //
+DELIMITER ;
+
+
+CALL sp_getstudentbyteachername("Mr. Ali");
+CALL sp_getstudentbyteachername("Ms. Sara");
+
+
+-- get all students count by teacher id
+-- IN -> t_id
+-- OUT -> total_students
+
+SELECT 
+COUNT(*)
+FROM students
+WHERE students.teacher_id = 1;
+
+
+
+
+-- get all students count by teacher id
+-- IN -> t_id
+-- OUT -> total_students
+DELIMITER //
+CREATE PROCEDURE sp_getstudentcountbyteacher(IN t_id INT, OUT total_students INT )
+BEGIN
+SELECT 
+COUNT(*) INTO total_students
+FROM students
+WHERE students.teacher_id = t_id;
+END //
+DELIMITER ;
+
+CALL sp_getstudentcountbyteacher(1, @count);
+SELECT @count AS total_students
+
